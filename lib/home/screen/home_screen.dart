@@ -35,8 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {});
         },
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Calculator'),
+          BottomNavigationBarItem(icon: Icon(Icons.calculate_outlined), label: 'BMI'),
         ],
       ),
     );

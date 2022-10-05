@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:songdo_study/home/screen/HomeScreen.dart';
+import 'package:songdo_study/home/screen/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
