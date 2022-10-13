@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:songdo_study/bmi/bmi_screen.dart';
+import 'package:songdo_study/todo/screen/todo_screen.dart';
 
+import '../../bmi/screen/bmi_screen.dart';
 import '../../calculator/screen/calculator_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           CalculatorScreen(),
           BmiScreen(),
+          TodoScreen(),
         ],
       ),
       //-- Area1 : bottomNavigationButton
@@ -37,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Calculator'),
           BottomNavigationBarItem(icon: Icon(Icons.calculate_outlined), label: 'BMI'),
+          BottomNavigationBarItem(icon: Icon(Icons.next_plan), label: 'TODO'),
         ],
       ),
     );

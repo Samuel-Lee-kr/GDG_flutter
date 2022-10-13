@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:songdo_study/widgets/nav_bar.dart';
 
 import 'bmi_result_screen.dart';
 
@@ -10,24 +11,22 @@ class BmiScreen extends StatefulWidget {
 }
 
 class _BmiScreenState extends State<BmiScreen> {
-  // int _currentIndex = 0;
   List<String> _hintText = [
     "속이지 말고 정확하게 입력합시다. -_-;;",
     "몸무게 속이지 말라고 했다. 다시 적어라!!",
   ];
+  int _heightValue = 0;
+  int _weightValue = 0;
+  String _gender = "남성";
 
   TextEditingController _heightController = TextEditingController();
   TextEditingController _weightController = TextEditingController();
 
-  int _heightValue = 0;
-  int _weightValue = 0;
-  double _bmiValue = 0;
-
-  String _gender = "남성";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
+
       appBar: AppBar(
         title: Text(
           "BMI Calculator App",

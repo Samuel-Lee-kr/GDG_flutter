@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:songdo_study/widgets/nav_bar.dart';
 
 class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({super.key});
@@ -21,12 +22,14 @@ class _CalculatorScreen extends State<CalculatorScreen> {
       _counter++;
     });
   }
+
   //-- 숫자 감소
   void _decrementCounter() {
     setState(() {
       _counter--;
     });
   }
+
   //-- 숫자 초기화 (0으로 세팅)
   void _resetCounter() {
     setState(() {
@@ -37,6 +40,13 @@ class _CalculatorScreen extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
+
+      appBar: AppBar(
+        title: Text("Calculator App"),
+        centerTitle: true,
+      ),
+
       //-- area1 : body
       body: Center(
         child: Column(
