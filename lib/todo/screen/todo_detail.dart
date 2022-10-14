@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:songdo_study/todo/model/todoModel.dart';
-import 'package:songdo_study/todo/screen/todo_screen.dart';
+// import 'package:songdo_study/todo/screen/todo_screen.dart';
 
 class TodoDetailScreen extends StatefulWidget {
   final TodoModel todoModel;
+
+  // final arguments;
 
   const TodoDetailScreen({Key? key, required this.todoModel}) : super(key: key);
 
@@ -14,17 +17,24 @@ class TodoDetailScreen extends StatefulWidget {
 class _TodoDetailScreenState extends State<TodoDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController _textController = TextEditingController(text: widget.todoModel.content);
+    TextEditingController _textController =
+        TextEditingController(text: widget.todoModel.content);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.todoModel.title),
+        title: Text(widget.todoModel.title!),
         centerTitle: true,
         elevation: 0,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
-            child: Icon(Icons.delete),
+            child: InkWell(
+                onTap: () {
+                  // 삭제 flag
+                  widget.todoModel.stateCheck = 'delete';
+                  Navigator.pop(context, widget.todoModel);
+                },
+                child: Icon(Icons.delete)),
           )
         ],
       ),
@@ -69,7 +79,24 @@ class _TodoDetailScreenState extends State<TodoDetailScreen> {
                 ),
                 Spacer(),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // 아직 선택된 데이터가 아니므로 future 를 쓴다?
+                      Future<DateTime?> selectedDate = showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2020),
+                          lastDate: DateTime(2030),
+                          builder: (BuildContext context, Widget? child) {
+                            return Theme(data: ThemeData.dark(), child: child!);
+                          });
+
+                      selectedDate.then((dateTime) {
+                        setState(() {
+                          widget.todoModel.addTime =
+                              DateFormat('yyyy-MM-dd').format(dateTime!);
+                        });
+                      });
+                    },
                     child: Text(
                       '마감 기한 설정',
                       style: TextStyle(color: Colors.white),
@@ -81,22 +108,12 @@ class _TodoDetailScreenState extends State<TodoDetailScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-
-
-
-          // page move
           setState(() {
             // update
             widget.todoModel.content = _textController.text;
-
           });
 
-          Navigator.of(context).push(MaterialPageRoute(builder: (_) => TodoScreen(
-
-
-
-          )));
-
+          Navigator.pop(context, widget.todoModel);
         },
         child: Icon(Icons.save),
       ),

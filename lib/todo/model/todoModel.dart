@@ -1,16 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+// import 'package:flutter/material.dart';
+// import 'package:intl/intl.dart';
 
 class TodoModel {
-  final String title;
-  String content;
-  String? addTime;
-  bool isCompleted;
+   String? title;
+  String? content;
+   String? addTime;
+  bool? isCompleted;
+  String? stateCheck;
 
   TodoModel({
-    required this.title,
-    required this.content,
+    this.title,
+    this.content,
     this.addTime,
-    required this.isCompleted,
+    this.isCompleted,
+    this.stateCheck,
   });
 }

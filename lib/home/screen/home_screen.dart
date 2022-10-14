@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:songdo_study/todo/screen/todo_screen.dart';
-
 import '../../bmi/screen/bmi_screen.dart';
 import '../../calculator/screen/calculator_screen.dart';
 
@@ -13,7 +12,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-  List<Widget> selectedPage = [];
 
   @override
   Widget build(BuildContext context) {
